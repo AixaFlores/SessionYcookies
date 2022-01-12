@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de colores</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body ><%= locals.bgColor ? locals.bgColor : null %>">
+    <h2 class="text-center">Colorin, colorado</h2>
+
+    <% if(locals.name){ %>
+      <div class="card">
+        <div class="card-header">
+          ¡Bienvenido!
+        </div>
+        <div class="card-body">
+          <% if (age) { %>
+            <h2>Hola <%= name %>, elegiste el color: <%= color %>, tu email es: <%= email %> y tu edad es: <%= age %></h2>
+        <%  }else{ %>                    
+          <h2>Hola <%= name %>, elegiste el color: <%= color %>, tu email es: <%= email %></h2>
+        <% } %>
+          <a href="/logout" class="btn btn-primary">Salir</a>
+        </div>
+      </div> 
+
+  <% }else{ %>
+
+    <form method="POST">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Ingrese su nombre</label>
+        <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value="<%= locals.old && old.name ? old.name : null %>">
+        <span class="text-danger small"><%= locals.errors && errors.name ? errors.name.msg : null %></span>
+      </div>
+
